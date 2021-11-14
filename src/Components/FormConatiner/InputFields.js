@@ -12,8 +12,24 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 const InputFields = () => {
 
-    const [dateValue, setDateValue] = useState(null)
+    const [dateValue, setDateValue] = useState(null);
+
     const classListCount = [ "I", "II", "III", "IV", "V", "V1", "V11", "V111", "IX", "X", "X11", "X12"];
+
+
+    // for data assigning 
+    const [Name,setName ]=useState("");
+    const [doB, setDoB ] =useState("");
+    const [studentClass, setStudentClass] =useState("");
+    const [divison, setDivision] =useState("");
+    const [gender, setgender ] =useState("");
+
+
+    // for adding new data - function call
+    const ValidateData  = ()=>{
+        // here we have to do the validataion part
+    }
+    
     return (
 
         
@@ -22,7 +38,7 @@ const InputFields = () => {
 
             <div className="text-input-field-container">
                 <div className="label-class">Name</div>
-                <input type="text" className="input-field" />
+                <input type="text" className="input-field" value={Name} onChange={(e)=>{setName(e.target.value)}}/>
             </div>
 
 
@@ -30,13 +46,13 @@ const InputFields = () => {
                     <div className="label-class">DOB</div>
                     <LocalizationProvider dateAdapter={AdapterDateFns} >
                         <DesktopDatePicker 
-                            value={dateValue}
+                            value={doB}
                             onChange={(newValue) => {
-                            setDateValue(newValue);
+                            setDoB(newValue);
                             }}
                             renderInput={({ inputRef, inputProps, InputProps }) => (
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <input ref={inputRef} {...inputProps} className="input-field-date"/>
+                                <input ref={inputRef} {...inputProps} className="input-field-date" onChange={(e)=>{setDoB(e.target.value)}}/>
                                 {InputProps?.endAdornment}
                                 </Box>
                             )}
@@ -49,14 +65,14 @@ const InputFields = () => {
                 <div className="label-class">Class</div>
                     <select>
                         {classListCount.map((option) => (
-                        <option value={option}>{option}</option>
+                        <option value={option} onChange={(e)=>{setStudentClass(e.target.value)}}>{option} </option>
                             ))}
                     </select>
                 <div className="label-class">Division</div>
                     <select>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
+                        <option value="A" onChange={(e)=>{setDivision(e.target.value)}}>A</option>
+                        <option value="B" onChange={(e)=>{setDivision(e.target.value)}}>B</option>
+                        <option value="C" onChange={(e)=>{setDivision(e.target.value)}}>C</option>
                     </select>
             </div>
 
@@ -64,16 +80,18 @@ const InputFields = () => {
                 <div className="label-class">Gender</div>
 
                 <div className="radio-selectors">
-                    <input type="radio" id="GenderChoice1" name="Male" value="Male" className="radio-btn"/>
+                    <input type="radio" id="GenderChoice1" name="Male" value="M" className="radio-btn"
+                     onChange={(e)=>{setgender(e.target.value)}}/>
                     <label for="GenderChoice1">Male</label>
-                    <input type="radio" id="GenderChoice2" name="Female" value="Female" className="radio-btn"/>
+                    <input type="radio" id="GenderChoice2" name="Female" value="F" className="radio-btn"
+                     onChange={(e)=>{setgender(e.target.value)}}/>
                     <label for="GenderChoice2">Female</label>
                 </div>
 
             </div>
             
 
-            
+            <div className="submit_btn" onClick={ValidateData}>Submit</div>
         </div>
     )
 }
