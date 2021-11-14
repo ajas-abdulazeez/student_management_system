@@ -12,14 +12,13 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 const InputFields = () => {
 
-    const [dateValue, setDateValue] = useState(null);
 
     const classListCount = [ "I", "II", "III", "IV", "V", "V1", "V11", "V111", "IX", "X", "X11", "X12"];
 
 
     // for data assigning 
     const [Name,setName ]=useState("");
-    const [doB, setDoB ] =useState("");
+    const [doB, setDoB ] = useState(new Date());
     const [studentClass, setStudentClass] =useState("");
     const [divison, setDivision] =useState("");
     const [gender, setgender ] =useState("");
@@ -27,12 +26,17 @@ const InputFields = () => {
 
     // for adding new data - function call
     const ValidateData  = ()=>{
-        // here we have to do the validataion part
+       console.log(Name);
+       console.log(doB);
+       console.log(studentClass);
+       console.log(divison);
+       console.log(gender);
+
     }
     
     return (
 
-        
+       
 
         <div >
 
@@ -63,13 +67,17 @@ const InputFields = () => {
             <div className="class-and-division-selectors">
 
                 <div className="label-class">Class</div>
-                    <select>
+                    <select 
+                    value={studentClass} onChange={(e)=>{setStudentClass(e.target.value)}}>
+
                         {classListCount.map((option) => (
-                        <option value={option} onChange={(e)=>{setStudentClass(e.target.value)}}>{option} </option>
+                        <option value={option} {...option} > {option} </option>
                             ))}
                     </select>
                 <div className="label-class">Division</div>
-                    <select>
+                    <select
+                        value={divison} onChange={(e)=>{setDivision(e.target.value)}}>
+
                         <option value="A" onChange={(e)=>{setDivision(e.target.value)}}>A</option>
                         <option value="B" onChange={(e)=>{setDivision(e.target.value)}}>B</option>
                         <option value="C" onChange={(e)=>{setDivision(e.target.value)}}>C</option>

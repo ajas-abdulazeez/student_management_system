@@ -14,14 +14,14 @@ const TableData = () => {
             AdmissionNo:"102",
             Name:"Ajas",
             Dob:"13/07/1998",
-            Class:"II",
+            Class:"I",
             Divison:"C",
             Gender:"M" },
             {
             AdmissionNo:"104",
             Name:"Asha",
             Dob:"26/09/1997",
-            Class:"I",
+            Class:"II",
             Divison:"A",
             Gender:"F" },
             {
