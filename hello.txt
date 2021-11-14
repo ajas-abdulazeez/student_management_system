@@ -1,1 +1,14 @@
 This is testing sample
+
+https://www.bitdegree.org/learn/css-form
+
+https://mui.com/components/date-picker/
+
+
+https://www.pluralsight.com/guides/how-to-get-selected-value-from-a-mapped-select-input-in-react
+
+installing react router dom
+
+npm install react-router-dom@5.2.0
+
+npm i @mui/lab
