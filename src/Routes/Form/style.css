@@ -1,0 +1,19 @@
+.home{
+    background: linear-gradient(180deg, #9A41D0 7.05%, rgba(178, 28, 226, 0.0177085) 99.99%, rgba(154, 65, 208, 0) 100%, rgba(255, 0, 200, 0.91) 100%);
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    padding-bottom: 150px;
+
+}
+
+.main-container{
+    width: 700px;
+    
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 60px 39px rgba(0, 0, 0, 0.25);
+}
