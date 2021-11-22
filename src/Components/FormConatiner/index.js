@@ -18,7 +18,7 @@ const FormConatiner = () => {
     // for data assigning 
     const [Name,setName ]=useState("");
     const [doB, setDoB ] = useState(new Date());
-    const [admissionNumber, setAdmissionNumber ] =useState("");
+
     const parse_date = Date.parse(doB)
     let date = new Date(parse_date);
     const final_date = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
@@ -28,37 +28,45 @@ const FormConatiner = () => {
     const [gender, setgender ] =useState("");
 
 
-    
+    // const [submitData, setsubmitData ] = useState([
+    //     {
+    //         Name:"",
+    //         dob:"",
+    //         studentClass:"",
+    //         divison:"",
+    //         gender:""
+    //     }
+
+    // ])
 
 
     // for adding new data - function call
     const ValidateData  = ()=>{
-        
+
         //validation part
         var error ="";
         var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?1234567890]+/;
-        if(!Name || !final_date || !studentClass ||!divison || !gender){
-            error = "Please fill all the fields ";
-            console.log(error) 
-          }
-        else if(format.test(Name)){
+        if(format.test(Name)){
             error = "Name should contain letters or space only ";
             console.log(error)
             return 
           }
+        else if (!final_date) {
+            error = "Date of birth cannot be empty";
+          }
+        else if (!studentClass) {
+            error = "Please select a Class";
+          }
+        else if (!divison) {
+            error = "Please select a Divsion";
+          }
+        else if (!gender) {
+            error = "Please select a Gender";
+          }
+        
         else{
             console.log("You have registered successfully!!!");
-            setAdmissionNumber("here the admission number is fetched from the database and add 1 to it")
-            const submitData= ({
-                Name:Name,
-                admissionNumber:"101",
-                dob:final_date,
-                studentClass:studentClass,
-                divison:divison,
-                gender:gender
-           })
-            console.log(admissionNumber)
-            console.log(submitData)
+
         }
 
     }
@@ -99,8 +107,6 @@ const FormConatiner = () => {
                     <select 
                     value={studentClass} onChange={(e)=>{setStudentClass(e.target.value)}}>
 
-                        <option value="">Select</option>
-
                         {classListCount.map((option) => (
                         <option value={option} {...option} > {option} </option>
                             ))}
@@ -109,7 +115,6 @@ const FormConatiner = () => {
                     <select
                         value={divison} onChange={(e)=>{setDivision(e.target.value)}}>
 
-                        <option value="">Select</option>
                         <option value="A" onChange={(e)=>{setDivision(e.target.value)}}>A</option>
                         <option value="B" onChange={(e)=>{setDivision(e.target.value)}}>B</option>
                         <option value="C" onChange={(e)=>{setDivision(e.target.value)}}>C</option>
